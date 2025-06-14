@@ -78,7 +78,7 @@
             >注册
             </el-button>
           </div>
-          <div class="switch" @click="show = 'register'" v-if="show === 'login'">还有没有账号? <span>创建账号</span></div>
+          <div class="switch" @click="show = 'register'" v-if="show === 'login'">还没有账号? <span>创建账号</span></div>
           <div class="switch" @click="show = 'login'" v-else>已有账号? <span>去登录</span></div>
         </div>
     </div>
