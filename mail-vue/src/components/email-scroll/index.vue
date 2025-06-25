@@ -91,6 +91,14 @@
                             height="20"/>
 
                     </el-tooltip>
+                    <el-tooltip v-if="item.status ===  7"
+                                effect="dark"
+                                content="无人收件"
+                    >
+                      <Icon icon="ic:round-mark-email-read" style="color:#FBBD08" width="20"
+                            height="20"/>
+
+                    </el-tooltip>
                   </div>
                   <div v-else></div>
                   <span class="name">
@@ -117,7 +125,7 @@
                       <span>
                         <Icon icon="mdi-light:email" width="20" height="20"/>
                       </span>
-                      <span>{{ item.accountEmail }}</span>
+                      <span>{{ item.status ===  7 ? formateReceive(item.recipient) : item.accountEmail }}</span>
                     </div>
                     <div class="del-status" v-if="item.isDel">
                       <el-tag type="info" size="small">已删除</el-tag>
@@ -262,6 +270,12 @@ watch(() => emailStore.deleteIds, () => {
 const accountShow = computed(() => {
   return uiStore.accountShow && settingStore.settings.manyEmail === 0
 })
+
+
+function formateReceive(recipient) {
+  recipient = JSON.parse(recipient)
+  return recipient.map(item => item.address).join(', ')
+}
 
 function handleScroll(e) {
 }
